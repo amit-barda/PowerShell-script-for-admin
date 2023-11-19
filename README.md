@@ -6,3 +6,6 @@ if aduser not work
 Install-WindowsFeature -Name “RSAT-AD-PowerShell” -IncludeAllSubFeature
 then 
 Get-Module -Name ActiveDirectory -ListAvailable
+
+
+#to Check if user is disable or enable 
