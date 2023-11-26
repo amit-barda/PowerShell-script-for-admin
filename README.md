@@ -32,3 +32,26 @@ ForEach ($user in $users)
 Disable-ADAccount -Identity $user
 write-host "user $($user) has been disabled"
 }
+
+
+
+
+Auto update windows 
+
+# first do that shit 
+Get-WindowsUpdate -AcceptAll -Install -AutoReboot
+
+# then Schedule a reboot for 11 PM
+$trigger = New-ScheduledTaskTrigger -Daily -At 11pm
+$action = New-ScheduledTaskAction -Execute "shutdown /r /t 0"
+Register-ScheduledTask -TaskName "DailyReboot" -Trigger $trigger -Action $action -RunLevel Highest
+
+
+# Create scheduled task to run the script daily
+$trigger = New-ScheduledTaskTrigger -Daily -At 11pm
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-File C:\Path\To\UpdateAndReboot.ps1"
+Register-ScheduledTask -TaskName "DailyUpdateAndReboot" -Trigger $trigger -Action $action -RunLevel Highest
+
+
+
+
