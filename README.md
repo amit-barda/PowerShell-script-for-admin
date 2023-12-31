@@ -49,7 +49,7 @@ $trigger = New-ScheduledTaskTrigger -Daily -At 11pm
 $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-File C:\Path\To\UpdateAndReboot.ps1"
 Register-ScheduledTask -TaskName "DailyUpdateAndReboot" -Trigger $trigger -Action $action -RunLevel Highest
 
-#clear win update 
+# clear win update 
 
 @ECHO OFF
 echo Simple Script to Reset / Clear Windows Update
